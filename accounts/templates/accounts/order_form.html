@@ -1,0 +1,33 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .btn btn-info{
+        border-radius: 10px;
+    }
+</style>
+
+<br>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <form action="" method="POST">{% csrf_token %}
+                
+                {{ formset.management_form }}
+                {{form}}
+                {% for form in formset %}
+                    {{form}}
+                    <hr>
+                {% endfor %}
+
+                <input class = "btn btn-info" type="submit" name="Submit">
+                <a  class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
